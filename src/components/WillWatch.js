@@ -8,6 +8,13 @@ class WillWatch extends React.Component {
       willWatch: false
     };
   }
+
+  clikShow = () => {
+    this.setState({
+      show: !this.state.show
+    })
+  };
+
   render() {
     const { movie, removeMovie, appThis, addMovieToWillWatch, removeMovieFromWillWatch } = this.props;
     // console.log("appThis", appThis, "single movie", movie);
@@ -24,31 +31,26 @@ class WillWatch extends React.Component {
           <div className="d-flex justify-content-between align-items-center">
             <p className="mb-0">Rating: {movie.vote_average}</p>
           </div>
-
+          {this.state.show ? <p className="mt-2">{movie.overview}</p> : null}
           <div className="d-flex justify-content-end align-items-center mt-3">
-            {this.state.willWatch ? (<button
-              type="button"
-              className="btn btn-secondary btn-sm"
-              onClick={() => {
-                this.setState({
-                  willWatch: false
-                });
-                removeMovieFromWillWatch(movie);
-              }}
-            >
-              Remove Watch
-            </button>) : (<button
-              type="button"
-              className="btn btn-success btn-sm"
-              onClick={() => {
-                this.setState({
-                    willWatch: true
-                  });
-                  addMovieToWillWatch(movie);
-              }}
-            >
-              Will Watch
-            </button>)}
+
+          <button 
+          type="button" 
+          className="btn btn-primary btn-sm mr-2" 
+          onClick={this.clikShow}>{this.state.show ? "Hide" : "Show" }
+          </button>
+          
+          <button type="button" 
+          className={this.state.willWatch ? "btn btn-secondary btn-sm" : "btn btn-success btn-sm"}
+          onClick={() => {
+          this.setState({
+            willWatch: !this.state.willWatch
+          })
+            this.state.willWatch ? removeMovieFromWillWatch(movie) : addMovieToWillWatch(movie);
+          }}>
+            {this.state.willWatch ? 'Remove Watch' : 'Will Watch'}
+          </button>
+            
             <button
               type="button"
               title="{movie.title}"
