@@ -23,7 +23,8 @@ class App extends React.Component {
     this.state = {
       movies: [],
       moviesWillWatch: [],
-      sort_by: "popularity.desc"
+      sort_by: 1,
+      data: ''
     };
 
     // this.removeMovie = this.removeMovie.bind(this);
@@ -34,28 +35,23 @@ class App extends React.Component {
 };
 
 getMovies = () =>{
-  fetch(`https://api.themoviedb.org/3/discover/movie?api_key=3f4ca4f3a9750da53450646ced312397&sort_by=${this.state.sort_by}`).then((response) => {
+  fetch(`https://api.themoviedb.org/3/discover/movie?api_key=3f4ca4f3a9750da53450646ced312397&page=${this.state.sort_by}`).then((response) => {
       console.log('then')
       return response.json()
     }).then((data) => {
+      this.setState({
+        data: data
+      })
       console.log(data)
       this.setState({
-        movies: data.results
+        movies: data.results,
       })
     })
 }
 
   componentDidUpdate(prevProps, prevState) {
     if(prevState.sort_by !== this.state.sort_by){
-      fetch(`https://api.themoviedb.org/3/discover/movie?api_key=3f4ca4f3a9750da53450646ced312397&sort_by=${this.state.sort_by}`).then((response) => {
-      console.log('then')
-      return response.json()
-    }).then((data) => {
-      console.log(data)
-      this.setState({
-        movies: data.results
-      })
-    })
+      this.getMovies()
     }
   }
 
@@ -88,12 +84,13 @@ getMovies = () =>{
   };
 
   render() {
-    // console.log("App this", this.state.movies[1].title);
+    // console.log("total", this.state.data.total_pages)
     return (
       <div className="container">
         <div className="row">
           <MovieList 
           uppdateSortBy={this.uppdateSortBy} 
+          data={this.state.data}
           sort_by={this.state.sort_by} 
           movies={this.state.movies} 
           appThis = {this} 
@@ -127,7 +124,9 @@ class MovieList extends React.Component {
       <div className="row">
         <div className="col-12">
             <MovieTabs sort_by={this.props.sort_by} 
-            uppdateSortBy={this.props.uppdateSortBy}/>
+            uppdateSortBy={this.props.uppdateSortBy}
+            data={this.props.data}  
+            />
           </div>
         </div>
         <div className="row">
