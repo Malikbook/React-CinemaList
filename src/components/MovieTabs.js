@@ -32,11 +32,11 @@ const MovieTabs = (props) => {
                     <div style={{cursor: 'pointer', borderRadius: '5px'}} className="navigation nav-link p-1"
                     onClick={handleClickM(sort_by)}
                     > 
-                        <FontAwesomeIcon style={{fontSize: '50px'}} icon={faCaretSquareLeft} />
+                        <FontAwesomeIcon className="icon" style={{fontSize: '50px'}} icon={faCaretSquareLeft} color="white" />
                     </div>
                 </li>
                 <li className="nav-item mx-3">
-                    <div style={{cursor: 'pointer', border: '1px black solid', borderRadius: '5px'}} className="px-1">
+                    <div style={{ border: '1px black solid', borderRadius: '5px', color: 'white'}} className="px-1 bg-info">
                         <div>
                             Total Pages: {data.total_pages}
                         </div>
@@ -49,7 +49,7 @@ const MovieTabs = (props) => {
                     <div style={{cursor: 'pointer', borderRadius: '5px'}} className="navigation nav-link p-1"
                     onClick={handleClickN(sort_by)}
                     >
-                        <FontAwesomeIcon style={{fontSize: '50px'}} icon={faCaretSquareRight} />
+                        <FontAwesomeIcon className="icon" style={{fontSize: '50px'}} icon={faCaretSquareRight} color="white" />
                     </div>
                 </li>
             </ul>

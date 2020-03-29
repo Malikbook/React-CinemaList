@@ -35,10 +35,10 @@ class SearchForm extends React.Component {
 
     render(){
         return(
-            <form onSubmit={this.handleSubmit} className="input-group flex-nowrap justify-content-sm-start justify-content-md-end">
+            <form onSubmit={this.handleSubmit} className="input-group flex-nowrap justify-content-sm-start justify-content-md-center">
                 <input type="text" className="rounded" onChange={this.handleChang} value={this.state.value} placeholder="
 Find Page"></input>
-                <button type="submit" onClick={this.handleClick(this.state.value)} className="btn btn-primary">Search</button>
+                <button type="submit" onClick={this.handleClick(this.state.value)} className="btn bg-success text-white">Search</button>
             </form>
         )
     }

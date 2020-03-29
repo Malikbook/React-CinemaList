@@ -117,7 +117,7 @@ getMovies = () =>{
     // console.log("total", this.state.data.total_pages)
     return (
       <div className="container">
-        <div className="row">
+        <div className="row mx-0">
           <MovieList 
           uppdateSortBy={this.uppdateSortBy} 
           data={this.state.data}
@@ -127,9 +127,9 @@ getMovies = () =>{
           addMovieToWillWatch = {this.addMovieToWillWatch} 
           removeMovieFromWillWatch={this.removeMovieFromWillWatch}/>
           <div className="col-4 col-sm-3 mt-4">
-              <h4>Will Watch: {this.state.moviesWillWatch.length} movies</h4>
+              <h4 className="text-white">Will Watch: {this.state.moviesWillWatch.length} movies</h4>
               {/* <button className="btn btn-sm btn-danger" onClick={this.dellAll} type="button">Dell. All</button> */}
-            <ul className="list-group">
+            <ul className="list-group rounded text-drk">
               {this.state.moviesWillWatch.map(movie => (
                 <li key={movie.id} className="list-group-item bg-info">
                   <div style={{border: '1px solid gray', padding: '5px', borderRadius: '3px'}} className="d-flex mx-n3 my-n2 flex-wrap justify-content-between bg-white">
@@ -153,17 +153,18 @@ class MovieList extends React.Component {
     return (
       <div className="col-8 col-sm-9">
       <div className="row">
-        <div className="col-12">
+        <div className="col-12 mt-2">
             <MovieTabs sort_by={this.props.sort_by} 
             uppdateSortBy={this.props.uppdateSortBy}
             data={this.props.data}  
             />
           </div>
+          <hr></hr>
         </div>
-        <div className="row">
+        <div className="row mb-5">
           {movies.map(movie => {
             return (
-              <div className="offset-1 col-10 offset-sm-0 col-sm-6 mt-4" key={movie.id}>
+              <div className="card-deck offset-1 col-12 offset-sm-0 col-md-6 mt-4" key={movie.id}>
                 <WillWatch 
                 movie={movie}  
                 removeMovie={removeMovie} 

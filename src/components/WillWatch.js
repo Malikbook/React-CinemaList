@@ -30,7 +30,7 @@ class WillWatch extends React.Component {
             movie.poster_path}`}
           alt=""
         />
-        <div className="card-body" style={{background: 'rgba(211, 211, 211, 0.616)'}}>
+        <div className="card-body align-items-stretch" style={{background: this.state.willWatch ? 'rgba(166, 253, 199, 0.705)' : 'rgba(211, 211, 211, 0.616)'}}>
           <h6 className="card-title">{movie.title}</h6>
           <div className="d-flex justify-content-between align-items-center">
             <p className="mb-0">Rating: {movie.vote_average}</p>
@@ -58,7 +58,7 @@ class WillWatch extends React.Component {
             <button
               type="button"
               title="{movie.title}"
-              className="btn btn-danger btn-sm mx-2"
+              className="btn btn-danger btn-sm mx-2 p-lg-3"
             //   onClick={ () => {console.log(this)} }
               onClick={removeMovie.bind(appThis, movie) }
             //   onClick={removeMovie(this, movie) }
