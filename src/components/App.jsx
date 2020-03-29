@@ -26,8 +26,12 @@ class App extends React.Component {
       movies: [],
       moviesWillWatch: [],
       sort_by: 1,
+<<<<<<< HEAD
       data: '',
       willWat: false
+=======
+      data: ''
+>>>>>>> 9c952ecac7882ca718c1a71f27bf555294d19f88
     };
 
     // this.removeMovie = this.removeMovie.bind(this);
@@ -50,7 +54,11 @@ getMovies = () =>{
         movies: data.results,
       })
     })
+<<<<<<< HEAD
 };
+=======
+}
+>>>>>>> 9c952ecac7882ca718c1a71f27bf555294d19f88
 
   componentDidUpdate(prevProps, prevState) {
     if(prevState.sort_by !== this.state.sort_by){
@@ -71,6 +79,10 @@ getMovies = () =>{
     })
   };
 
+<<<<<<< HEAD
+=======
+  };
+>>>>>>> 9c952ecac7882ca718c1a71f27bf555294d19f88
   removeMovieFromWillWatch = (movie) => {
  
     const updateMoviesWillWatch = [...this.state.moviesWillWatch];
@@ -88,6 +100,7 @@ getMovies = () =>{
 
   uppdateSortBy = value => {
     this.setState({
+<<<<<<< HEAD
       sort_by: value
     });
   };
@@ -112,6 +125,17 @@ getMovies = () =>{
   };
 
 
+=======
+      moviesWillWatch: updateMoviesWillWatch
+    })
+  };
+
+  uppdateSortBy = value => {
+    this.setState({
+      sort_by: value
+    });
+  };
+>>>>>>> 9c952ecac7882ca718c1a71f27bf555294d19f88
 
   render() {
     // console.log("total", this.state.data.total_pages)
