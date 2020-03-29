@@ -1,18 +1,22 @@
 import React from "react";
 
 class WillWatch extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       willWatch: false
     };
+    console.log(this.willWat)
   }
+  
 
   clikShow = () => {
     this.setState({
       show: !this.state.show
     })
+    console.log("will", this.props.willWat)
+    console.log("thisWill", this.state.willWatch)
   };
 
   render() {
@@ -26,22 +30,22 @@ class WillWatch extends React.Component {
             movie.poster_path}`}
           alt=""
         />
-        <div className="card-body" style={{background: this.state.willWatch ? 'rgba(144, 248, 144, 0.466)' : 'rgba(211, 211, 211, 0.616)'}}>
+        <div className="card-body" style={{background: 'rgba(211, 211, 211, 0.616)'}}>
           <h6 className="card-title">{movie.title}</h6>
           <div className="d-flex justify-content-between align-items-center">
             <p className="mb-0">Rating: {movie.vote_average}</p>
           </div>
           {this.state.show ? <p className="mt-2">{movie.overview}</p> : null}
-          <div className="d-flex justify-content-end align-items-center mt-3">
+          <div className="d-flex mr-n2 mr-sm-n0 justify-content-center align-items-center mt-3">
 
           <button 
           type="button" 
-          className="btn btn-primary btn-sm mr-2" 
+          className="btn btn-primary btn-sm mr-2 p-lg-3" 
           onClick={this.clikShow}>{this.state.show ? "Hide" : "Show" }
           </button>
           
           <button type="button" 
-          className={this.state.willWatch ? "btn btn-secondary btn-sm" : "btn btn-success btn-sm"}
+          className={this.state.willWatch ? "btn btn-secondary btn-sm p-lg-3" : "btn btn-success btn-sm p-lg-3"}
           onClick={() => {
           this.setState({
             willWatch: !this.state.willWatch
