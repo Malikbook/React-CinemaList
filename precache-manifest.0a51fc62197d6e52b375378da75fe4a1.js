@@ -1,7 +1,7 @@
 self.__precacheManifest = [
   {
-    "revision": "f4a8c60d937685b32783",
-    "url": "/React-CinemaList/static/js/main.85f66b03.chunk.js"
+    "revision": "3abe32c91dceabaa5508",
+    "url": "/React-CinemaList/static/js/main.c38170e4.chunk.js"
   },
   {
     "revision": "7050c2e316e56932a1fe",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/React-CinemaList/static/js/2.341fbce4.chunk.js"
   },
   {
-    "revision": "ecf0cdf7bec0555db28cc8edf7ecfd4b",
+    "revision": "c84a312d684a50821e40b43c12a555d7",
     "url": "/React-CinemaList/index.html"
   }
 ];
