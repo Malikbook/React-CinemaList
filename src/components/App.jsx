@@ -26,12 +26,8 @@ class App extends React.Component {
       movies: [],
       moviesWillWatch: [],
       sort_by: 1,
-<<<<<<< HEAD
       data: '',
       willWat: false
-=======
-      data: ''
->>>>>>> 9c952ecac7882ca718c1a71f27bf555294d19f88
     };
 
     // this.removeMovie = this.removeMovie.bind(this);
@@ -54,11 +50,7 @@ getMovies = () =>{
         movies: data.results,
       })
     })
-<<<<<<< HEAD
 };
-=======
-}
->>>>>>> 9c952ecac7882ca718c1a71f27bf555294d19f88
 
   componentDidUpdate(prevProps, prevState) {
     if(prevState.sort_by !== this.state.sort_by){
@@ -79,10 +71,6 @@ getMovies = () =>{
     })
   };
 
-<<<<<<< HEAD
-=======
-  };
->>>>>>> 9c952ecac7882ca718c1a71f27bf555294d19f88
   removeMovieFromWillWatch = (movie) => {
  
     const updateMoviesWillWatch = [...this.state.moviesWillWatch];
@@ -100,7 +88,6 @@ getMovies = () =>{
 
   uppdateSortBy = value => {
     this.setState({
-<<<<<<< HEAD
       sort_by: value
     });
   };
@@ -112,30 +99,19 @@ getMovies = () =>{
   };
 
 
-  dellAll = () => {
-    this.uppdateWillWat(false)
-    console.log("willwat", this.state.willWat)
+  // dellAll = () => {
+  //   this.uppdateWillWat(false)
+  //   console.log("willwat", this.state.willWat)
 
-    const updateMoviesWillWatch = [...this.state.moviesWillWatch];
-    updateMoviesWillWatch.splice(0, updateMoviesWillWatch.length);
-    this.setState({
-      moviesWillWatch: updateMoviesWillWatch,
-      willWat: this.uppdateWillWat(false)
-      })
-  };
+  //   const updateMoviesWillWatch = [...this.state.moviesWillWatch];
+  //   updateMoviesWillWatch.splice(0, updateMoviesWillWatch.length);
+  //   this.setState({
+  //     moviesWillWatch: updateMoviesWillWatch,
+  //     willWat: this.uppdateWillWat(false)
+  //     })
+  // };
 
 
-=======
-      moviesWillWatch: updateMoviesWillWatch
-    })
-  };
-
-  uppdateSortBy = value => {
-    this.setState({
-      sort_by: value
-    });
-  };
->>>>>>> 9c952ecac7882ca718c1a71f27bf555294d19f88
 
   render() {
     // console.log("total", this.state.data.total_pages)
@@ -152,7 +128,7 @@ getMovies = () =>{
           removeMovieFromWillWatch={this.removeMovieFromWillWatch}/>
           <div className="col-4 col-sm-3 mt-4">
               <h4>Will Watch: {this.state.moviesWillWatch.length} movies</h4>
-              <button className="btn btn-sm btn-danger" onClick={this.dellAll} type="button">Dell. All</button>
+              {/* <button className="btn btn-sm btn-danger" onClick={this.dellAll} type="button">Dell. All</button> */}
             <ul className="list-group">
               {this.state.moviesWillWatch.map(movie => (
                 <li key={movie.id} className="list-group-item bg-info">
