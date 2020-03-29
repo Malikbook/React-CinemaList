@@ -26,16 +26,15 @@ const MovieTabs = (props) => {
 
    
     return (
-        <div className="row mx-0 ml-4 ml-sm-0 justify-content-between">
-            <ul className="tabs nav nav-pills mt-2 px-0 col-12 col-md-6 flex-nowrap">
+        <div className="row mx-0 ml-4 ml-sm-0 justify-content-md-between">
+            <ul className="tabs nav nav-pills mt-2 px-0 col-12 col-md-7 col-lg-6 flex-nowrap">
                 <li className="nav-item navigation align-self-center">
                     <div style={{cursor: 'pointer', borderRadius: '5px'}} className="navigation nav-link p-1"
-                    onClick={handleClickM(sort_by)}
-                    > 
+                    onClick={handleClickM(sort_by)}> 
                         <FontAwesomeIcon className="icon" style={{fontSize: '50px'}} icon={faCaretSquareLeft} color="white" />
                     </div>
                 </li>
-                <li className="nav-item mx-3">
+                <li className="nav-item mx-1">
                     <div style={{ border: '1px black solid', borderRadius: '5px', color: 'white'}} className="px-1 bg-info">
                         <div>
                             Total Pages: {data.total_pages}
