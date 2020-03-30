@@ -17,7 +17,7 @@ class SearchForm extends React.Component {
         event.preventDefault();
         console.log (this.state.value);
     }
-
+;
     handleChang(event) {
         this.setState({
             value: event.target.value
@@ -35,10 +35,10 @@ class SearchForm extends React.Component {
 
     render(){
         return(
-            <form onSubmit={this.handleSubmit} className="input-group flex-nowrap justify-content-sm-start justify-content-md-center">
+            <form onSubmit={this.handleSubmit} className="input-group flex-wrap justify-content-center justify-content-md-end">
                 <input type="text" className="rounded" onChange={this.handleChang} value={this.state.value} placeholder="
 Find Page"></input>
-                <button type="submit" onClick={this.handleClick(this.state.value)} className="btn bg-success text-white">Search</button>
+                <button type="submit" onClick={this.handleClick(this.state.value)} className="btn bg-success">Search</button>
             </form>
         )
     }

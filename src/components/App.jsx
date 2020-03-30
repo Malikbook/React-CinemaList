@@ -116,7 +116,7 @@ getMovies = () =>{
   render() {
     // console.log("total", this.state.data.total_pages)
     return (
-      <div className="container">
+      <div className="container px-0">
         <div className="row mx-0">
           <MovieList 
           uppdateSortBy={this.uppdateSortBy} 
@@ -126,7 +126,7 @@ getMovies = () =>{
           appThis = {this} 
           addMovieToWillWatch = {this.addMovieToWillWatch} 
           removeMovieFromWillWatch={this.removeMovieFromWillWatch}/>
-          <div className="col-12 col-sm-3 mt-2 mb-5">
+          <div className="col-12 col-sm-3 mt-3 mb-5">
               <h4 className="text-white">Will Watch: {this.state.moviesWillWatch.length} movies</h4>
               {/* <button className="btn btn-sm btn-danger" onClick={this.dellAll} type="button">Dell. All</button> */}
             <ul className="list-group rounded text-drk">
@@ -152,18 +152,18 @@ class MovieList extends React.Component {
     // console.log("MovieList movies", movies, removeMovie);
     return (
       <div className="col-10 col-sm-9">
-      <div className="row mx-0">
-        <div className="col-12 mt-2">
+      <div className="row mx-0 justify-content-center">
+        <div className="mt-2 w-100">
             <MovieTabs sort_by={this.props.sort_by} 
             uppdateSortBy={this.props.uppdateSortBy}
             data={this.props.data}  
             />
           </div>
         </div>
-        <div className="row mb-5">
+        <div className="row mb-5 justify-content-center">
           {movies.map(movie => {
             return (
-              <div className="card-deck offset-1 col-12 offset-sm-0 col-md-6 mt-4" key={movie.id}>
+              <div className="card-deck offset-1 col-12 mx-0 offset-sm-0 col-md-6 mt-4" key={movie.id}>
                 <WillWatch 
                 movie={movie}  
                 removeMovie={removeMovie} 

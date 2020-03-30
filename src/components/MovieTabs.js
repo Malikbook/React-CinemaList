@@ -26,8 +26,8 @@ const MovieTabs = (props) => {
 
    
     return (
-        <div className="row mx-0 ml-4 ml-sm-0 justify-content-md-between">
-            <ul className="tabs nav nav-pills mt-2 px-0 col-12 col-md-7 col-lg-6 flex-nowrap">
+        <div className="d-flex justify-content-center justify-content-lg-around flex-wrap mx-0">
+            <ul className="tabs nav nav-pills mt-2 flex-nowrap justify-content-center">
                 <li className="nav-item navigation align-self-center">
                     <div style={{cursor: 'pointer', borderRadius: '5px'}} className="navigation nav-link p-1"
                     onClick={handleClickM(sort_by)}> 
@@ -52,7 +52,7 @@ const MovieTabs = (props) => {
                     </div>
                 </li>
             </ul>
-            <div className="col-12 px-0 col-md-6 mt-2 align-self-center">
+            <div className="mt-2 align-self-center justify-content-center">
                 <SearchForm sort_by={props.sort_by} uppdateSortBy={props.uppdateSortBy}/>
             </div>
         </div>
