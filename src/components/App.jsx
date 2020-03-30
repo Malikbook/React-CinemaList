@@ -117,7 +117,7 @@ getMovies = () =>{
     // console.log("total", this.state.data.total_pages)
     return (
       <div className="container px-0">
-        <div className="row mx-0">
+        <div className="row mx-0 justify-content-center">
           <MovieList 
           uppdateSortBy={this.uppdateSortBy} 
           data={this.state.data}
@@ -129,7 +129,7 @@ getMovies = () =>{
           <div className="col-12 col-sm-3 mt-3 mb-5">
               <h4 className="text-white">Will Watch: {this.state.moviesWillWatch.length} movies</h4>
               {/* <button className="btn btn-sm btn-danger" onClick={this.dellAll} type="button">Dell. All</button> */}
-            <ul className="list-group rounded text-drk">
+            <ul className="list-group rounded text-drk list_mov">
               {this.state.moviesWillWatch.map(movie => (
                 <li key={movie.id} className="list-group-item bg-info">
                   <div style={{border: '1px solid gray', padding: '5px', borderRadius: '3px'}} className="d-flex mx-n3 my-n2 flex-wrap justify-content-between bg-white">

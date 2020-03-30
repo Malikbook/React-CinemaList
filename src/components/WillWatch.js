@@ -40,12 +40,12 @@ class WillWatch extends React.Component {
 
           <button 
           type="button" 
-          className="btn btn-primary btn-sm mr-2 p-lg-3" 
+          className="btn btn-primary btn-sm mr-2 p-2 p-sm-3 p-md-2 p-xl-3" 
           onClick={this.clikShow}>{this.state.show ? "Hide" : "Show" }
           </button>
           
           <button type="button" 
-          className={this.state.willWatch ? "btn btn-secondary btn-sm p-lg-3" : "btn btn-success btn-sm p-lg-3"}
+          className={this.state.willWatch ? "btn btn-secondary btn-sm p-2 p-sm-3 p-md-2 p-xl-3" : "btn btn-success btn-sm p-2 p-sm-3 p-md-2 p-xl-3"}
           onClick={() => {
           this.setState({
             willWatch: !this.state.willWatch
@@ -58,7 +58,7 @@ class WillWatch extends React.Component {
             <button
               type="button"
               title="{movie.title}"
-              className="btn btn-danger btn-sm mx-2 p-lg-3"
+              className="btn btn-danger btn-sm mx-2 p-2 p-sm-3 p-md-2 p-xl-3"
             //   onClick={ () => {console.log(this)} }
               onClick={removeMovie.bind(appThis, movie) }
             //   onClick={removeMovie(this, movie) }
