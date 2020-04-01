@@ -7,7 +7,6 @@ class WillWatch extends React.Component {
     this.state = {
       willWatch: false
     };
-    console.log(this.willWat)
   }
   
 
@@ -15,8 +14,6 @@ class WillWatch extends React.Component {
     this.setState({
       show: !this.state.show
     })
-    console.log("will", this.props.willWat)
-    console.log("thisWill", this.state.willWatch)
   };
 
   render() {

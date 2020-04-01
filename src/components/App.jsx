@@ -34,7 +34,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getMovies()
+    this.getMovies();
 };
 
 getMovies = () =>{
@@ -56,7 +56,8 @@ getMovies = () =>{
     if(prevState.sort_by !== this.state.sort_by){
       this.getMovies()
     }
-  }
+  };
+
 
   addMovieToWillWatch = (movie) => {
     // console.log(movie);
@@ -68,7 +69,7 @@ getMovies = () =>{
 
     this.setState({
       moviesWillWatch: updateMoviesWillWatch,
-    })
+    });
   };
 
   removeMovieFromWillWatch = (movie) => {
@@ -115,6 +116,7 @@ getMovies = () =>{
 
   render() {
     // console.log("total", this.state.data.total_pages)
+    console.log('rm', this.state.rememberMov)
     return (
       <div className="container px-0">
         <div className="row mx-0 justify-content-center">

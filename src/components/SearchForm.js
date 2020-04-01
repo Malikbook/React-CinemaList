@@ -35,8 +35,8 @@ class SearchForm extends React.Component {
 
     render(){
         return(
-            <form onSubmit={this.handleSubmit} className="input-group flex-wrap justify-content-center justify-content-md-end">
-                <input type="text" className="rounded" onChange={this.handleChang} value={this.state.value} placeholder="
+            <form onSubmit={this.handleSubmit} className="input-group flex-wrap justify-content-center justify-content-lg-end">
+                <input type="text" className="rounded col-5 col-sm-7 mx-0" onChange={this.handleChang} value={this.state.value} placeholder="
 Find Page"></input>
                 <button type="submit" onClick={this.handleClick(this.state.value)} className="btn bg-success">Search</button>
             </form>
