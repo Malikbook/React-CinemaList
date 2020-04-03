@@ -8,7 +8,6 @@ class WillWatch extends React.Component {
       willWatch: false
     };
   }
-  
 
   clikShow = () => {
     this.setState({

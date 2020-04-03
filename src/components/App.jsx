@@ -27,7 +27,6 @@ class App extends React.Component {
       moviesWillWatch: [],
       sort_by: 1,
       data: '',
-      willWat: false
     };
 
     // this.removeMovie = this.removeMovie.bind(this);
@@ -35,6 +34,15 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getMovies();
+
+    if(localStorage.getItem('mov') !== null){
+    const localSto = localStorage.getItem('mov');
+    const local = JSON.parse(localSto);
+    this.setState({
+      moviesWillWatch: local
+      });
+      console.log(local);
+    }
 };
 
 getMovies = () =>{
@@ -70,6 +78,8 @@ getMovies = () =>{
     this.setState({
       moviesWillWatch: updateMoviesWillWatch,
     });
+
+    this.local(updateMoviesWillWatch)
   };
 
   removeMovieFromWillWatch = (movie) => {
@@ -85,6 +95,10 @@ getMovies = () =>{
     this.setState({
         moviesWillWatch: updateMoviesWillWatch
       })
+
+      // this.local(updateMoviesWillWatch)
+
+      // localStorage.setItem('mov', JSON.stringify(updateMoviesWillWatch))
     };
 
   uppdateSortBy = value => {
@@ -93,30 +107,28 @@ getMovies = () =>{
     });
   };
 
-  uppdateWillWat = value => {
+  uppdateMoviesWillWatch = value => {
     this.setState({
-      willWat: value
+      moviesWillWatch: value
     });
   };
 
+   local = (updateMoviesWillWatch) =>{
+    localStorage.setItem('mov', JSON.stringify(updateMoviesWillWatch))
+   };
 
-  // dellAll = () => {
-  //   this.uppdateWillWat(false)
-  //   console.log("willwat", this.state.willWat)
-
-  //   const updateMoviesWillWatch = [...this.state.moviesWillWatch];
-  //   updateMoviesWillWatch.splice(0, updateMoviesWillWatch.length);
-  //   this.setState({
-  //     moviesWillWatch: updateMoviesWillWatch,
-  //     willWat: this.uppdateWillWat(false)
-  //     })
-  // };
-
-
+   dell = () =>{
+      const updateMoviesWillWatch = [...this.state.moviesWillWatch];
+      updateMoviesWillWatch.splice(0, updateMoviesWillWatch.length);
+      this.setState({
+        moviesWillWatch: updateMoviesWillWatch,
+        })
+   }
 
   render() {
     // console.log("total", this.state.data.total_pages)
-    console.log('rm', this.state.rememberMov)
+    // console.log('rm', this.state.rememberMov)
+    // const dell = this.dill;
     return (
       <div className="container px-0">
         <div className="row mx-0 justify-content-center">
@@ -129,14 +141,19 @@ getMovies = () =>{
           addMovieToWillWatch = {this.addMovieToWillWatch} 
           removeMovieFromWillWatch={this.removeMovieFromWillWatch}/>
           <div className="col-12 col-sm-3 mt-3 mb-5">
-              <h4 className="text-white">Will Watch: {this.state.moviesWillWatch.length} movies</h4>
-              {/* <button className="btn btn-sm btn-danger" onClick={this.dellAll} type="button">Dell. All</button> */}
+          <h4 className="text-white">Will Watch: {this.state.moviesWillWatch.length} movies</h4>
+              <button className="btn btn-sm btn-danger" onClick={this.dell} onSubmit={function(){
+                localStorage.clear('mov');
+
+              }} type="button">Dell. All</button>
             <ul className="list-group rounded text-drk list_mov">
               {this.state.moviesWillWatch.map(movie => (
-                <li key={movie.id} className="list-group-item bg-info">
-                  <div style={{border: '1px solid gray', padding: '5px', borderRadius: '3px'}} className="d-flex mx-n3 my-n2 flex-wrap justify-content-between bg-white">
-                    <p>{movie.title}</p>
-                    <p>Rating: {movie.vote_average}</p>
+                <li key={movie.id} className="li_movie list-group-item bg-info mt-2">
+                  <div style={{border: '1px solid gray', padding: '5px', borderRadius: '3px'}} className="d-flex mx-n3 my-n2 flex-nowrap justify-content-between bg-white">
+                    <div>
+                      <p style={{lineHeight: '20px', marginBottom: '0px', paddingBottom: '0px'}}>{movie.title}</p><br />
+                      <p style={{lineHeight: '15px', marginTop: '-10px', paddingTop: '5px'}}>Rating: {movie.vote_average}</p>
+                    </div>  
                   </div>
                 </li>
               ))}
