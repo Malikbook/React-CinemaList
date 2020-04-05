@@ -68,18 +68,13 @@ getMovies = () =>{
 
 
   addMovieToWillWatch = (movie) => {
-    // console.log(movie);
-    // this.state.moviesWillWatch.push(movie);
-    // const updateMoviesWillWatch = [...this.state.moviesWillWatch];
-    // updateMoviesWillWatch.push(movie);
-    
     const updateMoviesWillWatch = [...this.state.moviesWillWatch, movie];
 
     this.setState({
       moviesWillWatch: updateMoviesWillWatch,
     });
 
-    this.local(updateMoviesWillWatch)
+    this.local(updateMoviesWillWatch);
   };
 
   removeMovieFromWillWatch = (movie) => {
@@ -90,15 +85,25 @@ getMovies = () =>{
     updateMoviesWillWatch.splice(index, 1)
     }
     
-    console.log(updateMoviesWillWatch)
-    
+    console.log(updateMoviesWillWatch);
+
+    const loc = localStorage.getItem('mov');
+    const doc = JSON.parse(loc);
+
+    let del = doc.filter( (item) => {
+      if(item.id === movie.id){
+        doc.splice(item, 1)
+      }
+      return doc;
+    } );
+
+    localStorage.setItem('mov', JSON.stringify(doc))
+
+    console.log('loc', doc, del);
+
     this.setState({
-        moviesWillWatch: updateMoviesWillWatch
+        moviesWillWatch: doc
       })
-
-      // this.local(updateMoviesWillWatch)
-
-      // localStorage.setItem('mov', JSON.stringify(updateMoviesWillWatch))
     };
 
   uppdateSortBy = value => {
@@ -123,6 +128,8 @@ getMovies = () =>{
       this.setState({
         moviesWillWatch: updateMoviesWillWatch,
         })
+
+      localStorage.clear('mov')
    }
 
   render() {
@@ -133,6 +140,8 @@ getMovies = () =>{
       <div className="container px-0">
         <div className="row mx-0 justify-content-center">
           <MovieList 
+          moviesWillWatch={this.state.moviesWillWatch}
+          arrMoviesId={this.state.arrMoviesId}
           uppdateSortBy={this.uppdateSortBy} 
           data={this.state.data}
           sort_by={this.state.sort_by} 
@@ -142,10 +151,7 @@ getMovies = () =>{
           removeMovieFromWillWatch={this.removeMovieFromWillWatch}/>
           <div className="col-12 col-sm-3 mt-3 mb-5">
           <h4 className="text-white">Will Watch: {this.state.moviesWillWatch.length} movies</h4>
-              <button className="btn btn-sm btn-danger" onClick={this.dell} onSubmit={function(){
-                localStorage.clear('mov');
-
-              }} type="button">Dell. All</button>
+              <button className="btn btn-sm btn-danger" onClick={this.dell} type="button">Dell. All</button>
             <ul className="list-group rounded text-drk list_mov">
               {this.state.moviesWillWatch.map(movie => (
                 <li key={movie.id} className="li_movie list-group-item bg-info mt-2">
@@ -167,7 +173,7 @@ getMovies = () =>{
 
 class MovieList extends React.Component {
   render() {
-    const {movies, appThis, removeMovieFromWillWatch, addMovieToWillWatch } = this.props;
+    const { moviesWillWatch, arrMoviesId, movies, appThis, removeMovieFromWillWatch, addMovieToWillWatch } = this.props;
     // console.log("MovieList movies", movies, removeMovie);
     return (
       <div className="col-10 col-sm-9">
@@ -184,6 +190,8 @@ class MovieList extends React.Component {
             return (
               <div className="card-deck offset-1 col-12 mx-0 offset-sm-0 col-md-6 mt-4" key={movie.id}>
                 <WillWatch 
+                moviesWillWatch={moviesWillWatch}
+                arrMoviesId={arrMoviesId}
                 movie={movie}  
                 removeMovie={removeMovie} 
                 appThis = {appThis} 
