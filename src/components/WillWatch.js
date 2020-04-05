@@ -31,11 +31,11 @@ class WillWatch extends React.Component {
         ? 'rgba(166, 253, 199, 0.705)' : 'rgba(211, 211, 211, 0.616)'}}>
           <h6 className="card-title">{movie.title}</h6>
           <div className="d-flex justify-content-between align-items-center">
-            <p className="mb-0">Rating: {movie.vote_average}</p>
+            <p className="mb-0 card-subtitle">Rating: {movie.vote_average}</p>
           </div>
-          {this.state.show ? <p className="mt-2">{movie.overview}</p> : null}
-      
-            <div className="d-flex justify-content-center align-items-stretch mt-3">
+          {this.state.show ? <p className="mt-2 card-text">{movie.overview}</p> : null}
+            </div>
+            <div className="d-flex justify-content-center align-items-stretch mt-3 card-footer">
             <button 
             type="button" 
             className="btn align-self-center  btn-primary btn-sm mr-2 p-2 p-sm-3 p-md-2 p-xl-3" 
@@ -68,7 +68,6 @@ class WillWatch extends React.Component {
                 <span className="material-icons">&#10008;</span>
               </button>
             </div>
-          </div>
         </div>
     );
   }

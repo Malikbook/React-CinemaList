@@ -138,7 +138,6 @@ getMovies = () =>{
   render() {
     // console.log("total", this.state.data.total_pages)
     // console.log('rm', this.state.rememberMov)
-    // const dell = this.dill;
     return (
       <div className="container px-0">
         <div className="row mx-0 justify-content-center">
@@ -163,6 +162,28 @@ getMovies = () =>{
                       <p style={{lineHeight: '20px', marginBottom: '0px', paddingBottom: '0px'}}>{movie.title}</p><br />
                       <p style={{lineHeight: '15px', marginTop: '-10px', paddingTop: '5px'}}>Rating: {movie.vote_average}</p>
                     </div>  
+                    <button onClick={ ()=> {
+                      const loc = localStorage.getItem('mov');
+                            const doc = JSON.parse(loc);
+
+                            let del = doc.filter( item => {
+                              if(item.id === movie.id){
+                                let ind = doc.indexOf(item);
+                                if(ind > -1){
+                                  doc.splice(ind, 1)
+                                }
+                              }
+                              return doc;
+                            } );
+
+                            localStorage.setItem('mov', JSON.stringify(doc))
+
+                            console.log('loc', doc, del);
+
+                            this.setState({
+                                moviesWillWatch: doc
+                              })
+                    }} className="btn-light mt-n1 mr-n1 text-danger align-self-start" type="button">&#10008;</button>
                   </div>
                 </li>
               ))}
