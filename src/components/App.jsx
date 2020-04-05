@@ -90,9 +90,12 @@ getMovies = () =>{
     const loc = localStorage.getItem('mov');
     const doc = JSON.parse(loc);
 
-    let del = doc.filter( (item) => {
+    let del = doc.filter( item => {
       if(item.id === movie.id){
-        doc.splice(item, 1)
+        let ind = doc.indexOf(item);
+         if(ind > -1){
+           doc.splice(ind, 1)
+         }
       }
       return doc;
     } );
