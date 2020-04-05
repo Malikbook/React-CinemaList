@@ -27,7 +27,8 @@ class WillWatch extends React.Component {
             movie.poster_path}`}
           alt=""
         />
-        <div className="card-body align-items-stretch" style={{background: ((this.state.willWatch || moviesWillWatch.filter( (item) => item.id === movie.id).length !== 0) && localStorage.getItem('mov') !== null) ? 'rgba(166, 253, 199, 0.705)' : 'rgba(211, 211, 211, 0.616)'}}>
+        <div className="card-body align-items-stretch" style={{background: (this.state.willWatch || moviesWillWatch.filter( (item) => item.id === movie.id).length !== 0) 
+        ? 'rgba(166, 253, 199, 0.705)' : 'rgba(211, 211, 211, 0.616)'}}>
           <h6 className="card-title">{movie.title}</h6>
           <div className="d-flex justify-content-between align-items-center">
             <p className="mb-0">Rating: {movie.vote_average}</p>
@@ -41,23 +42,17 @@ class WillWatch extends React.Component {
             onClick={this.clikShow}>{this.state.show ? "Hide" : "Show" }
             </button>
         
-            {((this.state.willWatch || moviesWillWatch.filter( (item) => item.id === movie.id).length !== 0) && localStorage.getItem('mov') !== null)
+            {(this.state.willWatch || moviesWillWatch.filter( (item) => item.id === movie.id).length !== 0)
                ?
                <button type="button" 
             className="btn btn-secondary btn-sm p-2 p-sm-3 p-md-2 p-xl-3"
             onClick={() => {
-            this.setState({
-              willWatch: !this.state.willWatch
-            })
               removeMovieFromWillWatch(movie);
             }}>
               Remove Watch
             </button> : <button type="button" 
             className="btn btn-success btn-sm p-2 p-sm-3 p-md-2 p-xl-3"
             onClick={() => {
-            this.setState({
-              willWatch: !this.state.willWatch
-            })
                addMovieToWillWatch(movie);
             }}>
               Will Watch

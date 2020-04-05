@@ -79,13 +79,13 @@ getMovies = () =>{
 
   removeMovieFromWillWatch = (movie) => {
  
-    const updateMoviesWillWatch = [...this.state.moviesWillWatch];
-    let index = updateMoviesWillWatch.indexOf(movie);
-    if (index > -1){
-    updateMoviesWillWatch.splice(index, 1)
-    }
+    // const updateMoviesWillWatch = [...this.state.moviesWillWatch];
+    // let index = updateMoviesWillWatch.indexOf(movie);
+    // if (index > -1){
+    // updateMoviesWillWatch.splice(index, 1)
+    // }
     
-    console.log(updateMoviesWillWatch);
+    // console.log(updateMoviesWillWatch);
 
     const loc = localStorage.getItem('mov');
     const doc = JSON.parse(loc);
